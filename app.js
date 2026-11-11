@@ -4,10 +4,10 @@
   const STORAGE_KEY = "splitsmart-data-v1";
   const USER = "Pravesh";
   const categories = ["Groceries", "Rent", "Dining", "Travel", "Utilities", "Shopping", "Other"];
-  const categoryIcons = { Groceries: "🥑", Rent: "⌂", Dining: "☕", Travel: "✈", Utilities: "ϟ", Shopping: "✧", Other: "◈" };
-  const categoryColors = ["#75B900", "#B6FF00", "#526A42", "#879975", "#263322", "#9DB17D", "#D7FF72"];
-  const groupIcons = { Hostel: "⌂", Roommates: "⌂", Trips: "✈", Friends: "✦", Other: "◈" };
-  const peopleColors = ["#263322", "#526A42", "#3D5237", "#4A633B", "#33452D", "#5B704C", "#405438"];
+  const categoryIcons = { Groceries: "G", Rent: "⌂", Dining: "D", Travel: "T", Utilities: "U", Shopping: "S", Other: "•" };
+  const categoryColors = ["#426B5B", "#B56B4F", "#8A9B79", "#D5A27F", "#688878", "#C6B89C", "#A1AC93"];
+  const groupIcons = { Hostel: "⌂", Roommates: "⌂", Trips: "↗", Friends: "✦", Other: "•" };
+  const peopleColors = ["#345447", "#667D6D", "#8A9B79", "#A9775D", "#526C60", "#9B8069", "#6F806F"];
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
   const escapeHtml = (value = "") => String(value).replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
@@ -204,7 +204,7 @@
     const personalBalance = (getBalances().get(state.settings.name) || 0);
     const netText = personalBalance >= 0 ? "You are owed overall" : "Your share to settle";
     const actions = `<button class="btn btn-outline" data-page="groups">＋ New group</button><button class="btn btn-primary" data-action="new-expense">＋ Add expense</button>`;
-    return `${pageHeading(`TUESDAY, ${new Date().toLocaleDateString("en-IN", { month: "long", year: "numeric" }).toUpperCase()}`, `Hello, ${escapeHtml((state.settings.name || USER).split(" ")[0])} ✦`, "Here's the shared picture, all in one place.", actions)}
+    return `${pageHeading(`TUESDAY, ${new Date().toLocaleDateString("en-IN", { month: "long", year: "numeric" }).toUpperCase()}`, `Hello, ${escapeHtml((state.settings.name || USER).split(" ")[0])}`, "Here's the shared picture, all in one place.", actions)}
       <div class="summary-grid">
         ${summaryCard("Total group expenses", money(totalSpent()), "Across all your groups", "↗", "")}
         ${summaryCard("You contributed", money(paidByUser), "Paid by you so far", "↗", "gold")}
